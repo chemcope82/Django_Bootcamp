@@ -2,16 +2,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Users</title>
+    <title>Home Page</title>
 </head>
 <body>
     <div class='container'>
-        <h1>Please sign up here!</h1><br>
-        <form method='POST'>
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type='submit', class='btn btn-primary', value='Submit'>
-        </form>
+        <div class='jumbotron'>
+            <h1>Welcome!</h1>
+            <h2>Go to /users to sign up!</h2>
+        </div>
     </div>
 </body>
 </html>

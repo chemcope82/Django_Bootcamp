@@ -1,12 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from AppTwo.models import User
+# from django.http import HttpResponse
+# from AppTwo.models import User
+from AppTwo.forms import NewUserForm
 
 def index(request):
     
-    return(HttpResponse('<em>Go to /users to view a list of user data</em>'))
+    return render(request, 'app_two/index.html')
 # Create your views here.
 def users(request):
-    users_dict = {'users':User.objects.order_by('last_name')}
 
-    return(render(request,'app_two/users.html', context=users_dict))
+    form = NewUserForm()
+
+    if request.method == 'POST':
+        form = NewUserForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print('Error, Form is Invalid')
+    
+    return render(request, 'app_two/users.html', {'form':form})
